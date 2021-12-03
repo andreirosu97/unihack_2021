@@ -7,12 +7,13 @@ import { ErrorHandler } from '../helpers/error-handler';
 import { State } from '../app.state';
 import { config } from '../config';
 import { catchError, tap } from 'rxjs/operators';
+import * as fromShared from '../state/shared.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  destroyed$: Subject<void> = new Subject<void>();
+  isUserLoggedIn$ = this.store.select(fromShared.isUserLogged);
 
   isUserLoggedIn = false;
 
@@ -21,14 +22,13 @@ export class AuthService {
     private router: Router,
     private http: HttpClient,
     private errorHandler: ErrorHandler
-  ) {}
+  ) {
+    this.isUserLoggedIn$.subscribe((isUserLoggedIn) => {
+      this.isUserLoggedIn = isUserLoggedIn;
+    });
+  }
 
   register(id: number): Observable<any> {
-    return this.http.post<any>(config.loginUrl, id).pipe(
-      tap((data) => {
-        console.log(data);
-      }),
-      catchError(this.errorHandler.handleError<any>('register'))
-    );
+    return this.http.get<any>(config.loginUrl + id);
   }
 }

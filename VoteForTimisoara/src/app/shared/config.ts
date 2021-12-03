@@ -1,9 +1,8 @@
-export const baseUrl = 'https://app-unihack.herokuapp.com';
+export const baseUrl = 'https://localhost:3000';
 
 // tslint:disable-next-line:class-name
 export class config {
   static loginUrl = baseUrl + '/app/hello/';
-  static registerUrl = baseUrl + '/register/user';
 }
 
 export enum errorResults {

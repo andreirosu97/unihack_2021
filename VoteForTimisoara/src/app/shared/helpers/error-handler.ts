@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Logger } from './logger';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorHandler {
-  constructor(private logger: Logger) {}
+  constructor() {}
 
   /**
    * Handle Http operation that failed.
