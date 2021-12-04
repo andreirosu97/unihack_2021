@@ -1,7 +1,7 @@
 package com.unihack.votefortimisoara.enums;
 
 /**
- * @author : Mihai-Cristian Popescu
+ * @author : Onetiu-George
  * @since : 12/3/2021, Fri
  **/
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author : Mihai-Cristian Popescu
+ * @author : Onetiu-George
  * @since : 12/3/2021, Fri
  **/
 @Entity

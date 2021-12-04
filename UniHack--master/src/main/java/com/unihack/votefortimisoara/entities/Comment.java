@@ -7,7 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * @author : Mihai-Cristian Popescu
+ * @author : Onetiu-George
  * @since : 12/3/2021, Fri
  **/
 @Entity

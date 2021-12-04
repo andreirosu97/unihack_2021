@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author : Mihai-Cristian Popescu
+ * @author : Onetiu-George
  * @since : 12/3/2021, Fri
  **/
 @Entity
