@@ -1,0 +1,58 @@
+DROP TABLE IF EXISTS seq;
+
+DROP TABLE IF EXISTS COMMENT;
+DROP TABLE IF EXISTS USER;
+DROP TABLE IF EXISTS DECISION;
+
+CREATE TABLE USER (
+        ID                  BIGINT(20) NOT NULL,
+        DATABASE_VERSION    BIGINT(20) NOT NULL,
+        CREATED_ON          DATETIME,
+        UPDATED_ON          DATETIME,
+        USERNAME            VARCHAR(64) NOT NULL UNIQUE,
+        NAME                VARCHAR(64) NOT NULL,
+        SURNAME             VARCHAR(64) NOT NULL,
+        MIDDLE_NAME         VARCHAR(64),
+        EMAIL               VARCHAR(254) NOT NULL UNIQUE,
+        ROLE                VARCHAR(64) NOT NULL,
+        PASSWORD            VARCHAR(64) NOT NULL,
+
+        PRIMARY KEY (ID)
+);
+
+CREATE TABLE DECISION (
+        ID                  BIGINT(20) NOT NULL,
+        DATABASE_VERSION    BIGINT(20) NOT NULL,
+        CREATED_ON          DATETIME,
+        UPDATED_ON          DATETIME,
+        DESCRIPTION         VARCHAR(64) NOT NULL,
+        DECISION_NUMBER     BIGINT(20) NOT NULL,
+        REQUEST_ID          BIGINT(20) NOT NULL,
+        PUBLISHER           VARCHAR(64) NOT NULL,
+
+        PRIMARY KEY (ID)
+);
+
+CREATE TABLE COMMENT (
+        ID                  BIGINT(20) NOT NULL,
+        DATABASE_VERSION    BIGINT(20) NOT NULL,
+        CREATED_ON          DATETIME,
+        UPDATED_ON          DATETIME,
+        TEXT                VARCHAR(64) NOT NULL,
+        USER_ID             BIGINT(20) NOT NULL,
+        DECISION_ID         BIGINT(20),
+
+        PRIMARY KEY (ID),
+        FOREIGN KEY (USER_ID) REFERENCES USER(ID),
+        FOREIGN KEY (DECISION_ID) REFERENCES DECISION(ID)
+
+);
+
+CREATE TABLE seq
+(
+    next_val BIGINT(20) DEFAULT NULL
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+
+INSERT INTO seq(next_val)
+    value (739816232)
